@@ -2,14 +2,14 @@ from flask import jsonify, request
 from web import app, db
 from web.model.Item import Item
 
-@app.route("/", methods=["GET"])
+@app.route("/api/users", methods=["GET"])
 def allItems():
   items = Item.query.all()
   if items is None:
     return jsonify({"error": "Cannot find any items."}), 404
   return jsonify([{"id": item.id, "name": item.name, "price": item.price} for item in items]), 200
 
-@app.route("/add", methods=["POST"])
+@app.route("/api/users/add", methods=["POST"])
 def addItem():
   data = request.json 
   name = data.get('name')
@@ -26,7 +26,7 @@ def addItem():
   db.session.commit()
   return jsonify({"message": "Item is added Successfully", "success": True}), 201
 
-@app.route("/get/<int:id>", methods=["GET"])
+@app.route("/api/users/<int:id>", methods=["GET"])
 def singleItem(id):
   item = Item.query.get(id)
 
@@ -35,7 +35,7 @@ def singleItem(id):
 
   return jsonify({"id": item.id, "name": item.name, "price": item.price}), 200
 
-@app.route("/update/<int:id>", methods=["PUT"])
+@app.route("/api/users/<int:id>", methods=["PUT"])
 def updateItem(id):
   data = request.json
   item = Item.query.get(id)
@@ -49,7 +49,7 @@ def updateItem(id):
   db.session.commit()
   return jsonify({"message": "Item is updated Successfully"}), 200
 
-@app.route("/delete/<int:id>", methods=["DELETE"])
+@app.route("/api/users/<int:id>", methods=["DELETE"])
 def deleteItem(id):
   item = Item.query.get(id)
   if item is None:
