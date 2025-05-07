@@ -1,0 +1,5 @@
+.venv
+web/__pycache__
+web/model/__pycache__
+web/routes/__pycache__
+web/routes/__pycache__
