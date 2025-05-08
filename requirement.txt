@@ -2,3 +2,5 @@ flask
 flask_sqlalchemy
 flask-cors
 psycogy-2
+python-dotenv
+Flask-Bcrypt

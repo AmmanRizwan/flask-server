@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from dotenv import load_dotenv
+from flask_bcrypt import Bcrypt
 import os
 
 load_dotenv()
@@ -20,4 +21,6 @@ CORS(app, resoruces={r"/*": {
 
 db = SQLAlchemy(app)
 
-from web.routes import item_routes
+bcrypt = Bcrypt(app)
+
+from web.routes import item_routes, user_routes
