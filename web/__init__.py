@@ -1,10 +1,18 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 app = Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql://postgres:1234@localhost/new_db'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+CORS(app, resoruces={r"/*": {
+  "origins": ['http://localhost:3000'],
+  "supports_credentials": True,
+  "methods": ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  "allow_headers": ["Content-Type", "Authorization"]
+}})
 
 db = SQLAlchemy(app)
 
