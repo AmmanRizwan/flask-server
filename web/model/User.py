@@ -1,3 +1,4 @@
+from datetime import datetime
 from web import db
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
@@ -8,3 +9,5 @@ class User(db.Model):
   name = db.Column(db.String(100), nullable=False)
   email = db.Column(db.String(100), nullable=False)
   password = db.Column(db.String(100), nullable=False)
+  createdAt = db.Column(db.DateTime, default=datetime.utcnow)
+  updatedAt = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
