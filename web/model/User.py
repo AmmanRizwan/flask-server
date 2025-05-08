@@ -11,3 +11,4 @@ class User(db.Model):
   password = db.Column(db.String(100), nullable=False)
   createdAt = db.Column(db.DateTime, default=datetime.utcnow)
   updatedAt = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+  item = db.relationship('Item', backref='owned_user', lazy=True)
