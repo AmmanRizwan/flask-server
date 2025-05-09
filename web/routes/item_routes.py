@@ -3,6 +3,7 @@ from web import app, db
 from web.model.Item import Item
 import uuid
 
+# Return all the items from the database
 @app.route("/api/items", methods=["GET"])
 def getAllItems():
   items = Item.query.all()
@@ -13,6 +14,7 @@ def getAllItems():
   return jsonify([{"id": item.id, "name": item.name, "price": item.price, "createdAt": item.createdAt, "updatedAt": item.updatedAt, "owner": item.owner} for item in items]), 200
 
 
+# Adding new product into the database
 @app.route("/api/item/add/<uuid:UserId>", methods=["POST"])
 def addItem(UserId):
   data = request.json
@@ -35,6 +37,9 @@ def addItem(UserId):
 
   return jsonify({"message": "Item Created Successfully!"}), 201
 
+# Updating the existing one by using the same value 
+# If the user not enter any value on the name it will
+# fill by it's own
 @app.route("/api/item/update/<uuid:id>", methods=["PUT"])
 def updateItem(id):
   item = Item.query.get(id)
@@ -48,6 +53,8 @@ def updateItem(id):
 
   return jsonify({"error": "Item updated Successfully!"}), 200
 
+# Return the single item from the database
+# @params id of the item
 @app.route("/api/item/<uuid:id>", methods=["GET"])
 def getSingleItem(id):
   item = Item.query.get(id)
@@ -57,6 +64,7 @@ def getSingleItem(id):
   
   return jsonify({"id": item.id, "name": item.name, "price": item.price, "createdAt": item.createdAt, "updatedAt": item.updatedAt, owner: item.owner}), 200
 
+# Remove the item from the database permanently
 @app.route("/api/item/delete/<uuid:id>", methods=["DELETE"])
 def removeItem(id):
   item = Item.query.get(id)

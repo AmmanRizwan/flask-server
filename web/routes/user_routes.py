@@ -5,6 +5,7 @@ from web import bcrypt
 import uuid 
 import re
 
+# Retrieve all the user from the database
 @app.route("/api/users/all", methods=["GET"])
 def allUser():
   users = User.query.all()
@@ -37,6 +38,7 @@ def Login(id):
   return jsonify({"message": "User Login Successfully!"}), 200
 
   
+# Create an account in the user model with unique person
 @app.route("/api/users/signin", methods=["POST"])
 def SignUp():
   data = request.json
@@ -45,6 +47,7 @@ def SignUp():
   email = data.get('email')
   password = data.get('password')
 
+  # is username present into the database
   user = User.query.filter_by(username=username).first()
 
   if user is not None:
