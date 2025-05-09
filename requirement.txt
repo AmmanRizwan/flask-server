@@ -1,3 +1,4 @@
+pip
 flask
 flask_sqlalchemy
 flask-cors

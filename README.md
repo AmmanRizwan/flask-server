@@ -1,8 +1,10 @@
 # Python - Flask FrameWork
 
-As we know that the flask is a microservice framework so i have created a small web api server that will provide a user, item and like data.
+As we know that the python-flask is a microservice framework. So I have created a small web api server that will provide a user, item and like data.
 
 ## Pre Requirement
+
+`pip upgrade python`
 
 `flask`
 
