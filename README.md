@@ -18,6 +18,10 @@ As we know that the flask is a microservice framework so i have created a small 
 
 ## How To Run the Server
 
+- Setup Environment `py -m venv .venv`
+
+- run the command `.venv/Scripts/activate`
+
 Create a new `.env` file on the source folder
 
 - Add Your `DATABASE_URI` key
