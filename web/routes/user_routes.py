@@ -47,7 +47,7 @@ def SignUp():
 
   user = User.query.filter_by(username=username).first()
 
-  if user.username == username:
+  if user is not None:
     return jsonify({"error":"User Already Exists!"}), 400
 
   if len(username) < 3 and username == None:
