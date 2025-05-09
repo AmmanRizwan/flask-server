@@ -11,3 +11,4 @@ class Item(db.Model):
   createdAt = db.Column(db.DateTime, default=datetime.utcnow)
   updatedAt = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
   owner = db.Column(UUID(as_uuid=True), db.ForeignKey('user.id'))
+  likeuser = db.relationship("Like", backref="like_user", lazy=True)

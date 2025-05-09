@@ -23,4 +23,4 @@ db = SQLAlchemy(app)
 
 bcrypt = Bcrypt(app)
 
-from web.routes import item_routes, user_routes
+from web.routes import item_routes, user_routes, like_routes
