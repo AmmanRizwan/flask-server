@@ -4,6 +4,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from web import db
 from web.model.User import User
 
+# Small one-to-many relation with the users
 class Item(db.Model):
   id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True)
   name = db.Column(db.String(100), unique=True, nullable=False)
